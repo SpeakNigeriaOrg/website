@@ -283,3 +283,68 @@ p { margin: 0; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .greeting-sub { transition: none; }
 }
+
+/* =========================================================
+   Additions: language status, volunteer theme, status badges
+   ========================================================= */
+
+/* Language status groups (replaces the flat "languages we work in") */
+.lang-status { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.lang-group { text-align: center; }
+.lang-group .status {
+  display: inline-block; font-size: var(--step--1); font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem;
+  border-radius: 999px; margin-bottom: 0.8rem;
+}
+.status.now     { background: color-mix(in srgb, var(--palm) 15%, #fff); color: var(--palm); }
+.status.next    { background: color-mix(in srgb, var(--saffron) 22%, #fff); color: #9a6a08; }
+.status.planned { background: var(--paper-2); color: var(--ink-soft); }
+.lang-group .names { font-family: var(--display); font-size: var(--step-1); color: var(--indigo); line-height: 1.4; }
+.lang-group.muted .names { color: var(--ink-soft); }
+
+/* Volunteer / get-involved accent (saffron) */
+.tag.volunteer { background: color-mix(in srgb, var(--saffron) 24%, #fff); color: #9a6a08; }
+.card.accent-volunteer { border-top: 4px solid var(--saffron); }
+.res .dot.volunteer { background: var(--saffron); }
+.tag.teachers { background: color-mix(in srgb, var(--palm) 14%, #fff); color: var(--palm); }
+.res .dot.teachers { background: var(--palm); }
+
+/* Highlighted "primary ask" block on paper */
+.highlight {
+  background: linear-gradient(180deg, #fff, var(--paper-2));
+  border: 1px solid var(--line); border-left: 5px solid var(--saffron);
+  border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow);
+}
+.highlight h3 { font-size: var(--step-2); color: var(--indigo); }
+.highlight p { color: var(--ink-soft); margin-top: 0.6rem; }
+
+/* Small inline status pill for headings */
+.pill {
+  display: inline-block; vertical-align: middle; font-family: var(--body);
+  font-size: 0.7em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.25em 0.7em; border-radius: 999px; margin-left: 0.6rem;
+}
+.pill.now  { background: color-mix(in srgb, var(--palm) 15%, #fff); color: var(--palm); }
+.pill.next { background: color-mix(in srgb, var(--saffron) 22%, #fff); color: #9a6a08; }
+.pill.soon { background: var(--paper-2); color: var(--ink-soft); }
+
+/* Steps list for "how to help" */
+.steps { counter-reset: step; display: grid; gap: 1rem; margin-top: 1.5rem; list-style: none; padding: 0; }
+.steps li {
+  position: relative; padding-left: 3.2rem; min-height: 2.2rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.steps li::before {
+  counter-increment: step; content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  background: var(--indigo); color: var(--saffron);
+  font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+  display: grid; place-items: center;
+}
+.steps li strong { color: var(--ink); }
+.steps li span { color: var(--ink-soft); font-size: var(--step-0); }
+
+@media (max-width: 860px) {
+  .lang-status { grid-template-columns: 1fr; gap: 1rem; }
+}
