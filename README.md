@@ -14,8 +14,9 @@ DNS at **Squarespace**.
 speaknigeria/
 ├── index.html          Home
 ├── about.html          About + mission statement
-├── courses.html        Online courses for children
-├── resources.html      Open-source games + YouTube videos
+├── courses.html        Yoruba courses + Igbo teacher call
+├── resources.html      GCompris game project + YouTube videos
+├── get-involved.html   Volunteer / translator / teacher / dev calls
 ├── favicon.svg
 ├── robots.txt
 ├── sitemap.xml
@@ -107,14 +108,16 @@ Search the codebase for each:
 
 1. **YouTube link** — `data-youtube` (footer of every page + resources page).
    Replace `href="#"` with your channel URL.
-2. **Games link** — `data-games` on `resources.html`. Point at your game app
-   (e.g. your Netlify deployment).
-3. **Email** — `hello@speaknigeria.org`. Change if you use a different address.
-4. **Language greetings** — `assets/main.js`, the `GREETINGS` array.
+2. **Email** — `hello@speaknigeria.org`. Change if you use a different address.
+   All the volunteer/teacher/enrollment buttons open pre-filled emails to this
+   address — update it everywhere if it changes.
+3. **Language greetings** — `assets/main.js`, the `GREETINGS` array.
    Yoruba, Igbo, and Hausa are correct.
    **Bini, Ijaw, and Efik are placeholders** — confirm with a native speaker.
-5. **Logo** — the brand mark is the letter "Ṣ" for now (`.brand-mark` in
+4. **Logo** — the brand mark is the letter "Ṣ" for now (`.brand-mark` in
    `styles.css`, and `favicon.svg`). Swap for real artwork when ready.
+5. **Game link** — once the GCompris-based game is downloadable/playable, add a
+   direct link on `resources.html` (currently framed as "in development").
 
 ---
 
