@@ -1,0 +1,11 @@
+# Cloudflare Pages redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Clean URLs → HTML files (so /about works as well as /about.html)
+/about        /about.html        200
+/courses      /courses.html      200
+/resources    /resources.html    200
+
+# Common not-found redirects (safe defaults)
+/index        /                  301
+/home         /                  301
