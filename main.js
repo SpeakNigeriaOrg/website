@@ -1,0 +1,65 @@
+/* Speak Nigeria — shared interactions */
+
+/* -----------------------------------------------------------
+   Rotating greeting under the big Yoruba welcome.
+   NOTE FOR TEE: Yoruba, Igbo, and Hausa below are correct.
+   The last three are placeholders — please confirm the
+   correct "welcome/hello" with a native speaker before launch.
+   ----------------------------------------------------------- */
+const GREETINGS = [
+  { word: "Ẹ káàbọ̀",      lang: "Yoruba" },   // ✓ verified
+  { word: "Nnọọ",          lang: "Igbo"   },   // ✓ verified
+  { word: "Barka da zuwa", lang: "Hausa"  },   // ✓ verified
+  { word: "Obọkhian",      lang: "Bini"   },   // ⚠ verify
+  { word: "Doo",           lang: "Ijaw"   },   // ⚠ verify
+  { word: "Mesiere",       lang: "Efik"   },   // ⚠ verify
+];
+
+(function greetingRotator() {
+  const big = document.querySelector("[data-greeting]");
+  const sub = document.querySelector("[data-greeting-sub]");
+  if (!big && !sub) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let i = 0;
+  const render = () => {
+    if (big) big.textContent = GREETINGS[i].word;
+    if (sub) sub.textContent = `Welcome in ${GREETINGS[i].lang}`;
+  };
+  render();
+  if (reduce) return;
+  if (big) big.style.transition = "opacity .3s ease";
+  if (sub) sub.style.transition = "opacity .3s ease";
+  setInterval(() => {
+    i = (i + 1) % GREETINGS.length;
+    if (big) big.style.opacity = 0;
+    if (sub) sub.style.opacity = 0;
+    setTimeout(() => {
+      render();
+      if (big) big.style.opacity = 1;
+      if (sub) sub.style.opacity = 1;
+    }, 300);
+  }, 3000);
+})();
+
+/* Scroll reveal */
+(function reveal() {
+  const items = document.querySelectorAll(".reveal");
+  if (!items.length || !("IntersectionObserver" in window)) {
+    items.forEach(el => el.classList.add("in")); return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  items.forEach(el => io.observe(el));
+})();
+
+/* Mobile menu */
+(function mobileMenu() {
+  const btn = document.querySelector(".nav-toggle");
+  const menu = document.querySelector(".mobile-menu");
+  if (!btn || !menu) return;
+  btn.addEventListener("click", () => {
+    const open = menu.classList.toggle("open");
+    btn.setAttribute("aria-expanded", String(open));
+  });
+})();

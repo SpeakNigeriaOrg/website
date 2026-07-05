@@ -14,7 +14,8 @@ DNS at **Squarespace**.
 speaknigeria/
 ├── index.html          Home
 ├── about.html          About + mission statement
-├── courses.html        Yoruba courses + Igbo teacher call
+├── languages.html      Nigeria's language families + our approach
+├── courses.html        Teaching philosophy + info/enrollment forms + Igbo call
 ├── resources.html      GCompris game project + YouTube videos
 ├── get-involved.html   Volunteer / translator / teacher / dev calls
 ├── favicon.svg
@@ -106,17 +107,23 @@ sometimes a few hours).
 
 Search the codebase for each:
 
-1. **YouTube link** — `data-youtube` (footer of every page + resources page).
+1. **Google Forms (courses)** — `data-form-info` and `data-form-enroll` on
+   `courses.html`. Replace `href="#"` with your "more information" form URL and
+   your "enrollment" form URL. These are the two main calls-to-action on the
+   Courses page.
+2. **YouTube link** — `data-youtube` (footer of every page + resources page).
    Replace `href="#"` with your channel URL.
-2. **Email** — `hello@speaknigeria.org`. Change if you use a different address.
-   All the volunteer/teacher/enrollment buttons open pre-filled emails to this
-   address — update it everywhere if it changes.
-3. **Language greetings** — `assets/main.js`, the `GREETINGS` array.
-   Yoruba, Igbo, and Hausa are correct.
+3. **Email** — `hello@speaknigeria.org`. Change if you use a different address.
+   All the volunteer/teacher buttons open pre-filled emails to this address —
+   update it everywhere if it changes.
+4. **Language greetings** — `assets/main.js`, the `GREETINGS` array. The large
+   hero phrase rotates through these. Yoruba, Igbo, and Hausa are correct.
    **Bini, Ijaw, and Efik are placeholders** — confirm with a native speaker.
-4. **Logo** — the brand mark is the letter "Ṣ" for now (`.brand-mark` in
-   `styles.css`, and `favicon.svg`). Swap for real artwork when ready.
-5. **Game link** — once the GCompris-based game is downloadable/playable, add a
+5. **Logo** — now a stylized trumpet flower (Nigeria's national flower) in
+   `assets/logo.svg` (the header/footer mark) and `favicon.svg` (the browser
+   tab). Both are simple hand-built SVGs — refine or replace with final artwork
+   any time; they use the site's indigo/saffron/hibiscus colors.
+6. **Game link** — once the GCompris-based game is downloadable/playable, add a
    direct link on `resources.html` (currently framed as "in development").
 
 ---
