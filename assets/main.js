@@ -16,17 +16,29 @@ const GREETINGS = [
 ];
 
 (function greetingRotator() {
-  const el = document.querySelector("[data-greeting-sub]");
-  if (!el) return;
+  const big = document.querySelector("[data-greeting]");
+  const sub = document.querySelector("[data-greeting-sub]");
+  if (!big && !sub) return;
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let i = 0;
-  const render = () => { el.textContent = `${GREETINGS[i].word} — welcome in ${GREETINGS[i].lang}`; };
+  const render = () => {
+    if (big) big.textContent = GREETINGS[i].word;
+    if (sub) sub.textContent = `Welcome in ${GREETINGS[i].lang}`;
+  };
   render();
   if (reduce) return;
-  setInterval(() => { i = (i + 1) % GREETINGS.length; el.style.opacity = 0;
-    setTimeout(() => { render(); el.style.opacity = 1; }, 250);
-  }, 2800);
-  el.style.transition = "opacity .25s ease";
+  if (big) big.style.transition = "opacity .3s ease";
+  if (sub) sub.style.transition = "opacity .3s ease";
+  setInterval(() => {
+    i = (i + 1) % GREETINGS.length;
+    if (big) big.style.opacity = 0;
+    if (sub) sub.style.opacity = 0;
+    setTimeout(() => {
+      render();
+      if (big) big.style.opacity = 1;
+      if (sub) sub.style.opacity = 1;
+    }, 300);
+  }, 3000);
 })();
 
 /* Scroll reveal */
