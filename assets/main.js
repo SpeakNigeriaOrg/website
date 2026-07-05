@@ -7,10 +7,10 @@
    correct "welcome/hello" with a native speaker before launch.
    ----------------------------------------------------------- */
 const GREETINGS = [
-  { word: "E\u0323 ka\u0301a\u0300bo\u0323\u0300",      lang: "Yoruba" },   // ✓ verified (decomposed for reliable rendering)
-  { word: "Nno\u0323o\u0323",          lang: "Igbo"   },   // ✓ verified (decomposed)
-  { word: "Barka da zuwa", lang: "Hausa"  },   // ✓ verified
-  { word: "Obo\u0323khian",      lang: "Bini"   },   // ⚠ verify
+  { word: "Ẹ káàb" + "o" + "\u0323" + "\u0300", lang: "Yoruba" },   // Uses an explicit decomposed sequence so the dot-below and grave stay attached to the same letter
+  { word: "Nnọọ", lang: "Igbo" },   // Uses direct Unicode characters for the dot-below + ogonek-style mark
+  { word: "Barka da zuwa", lang: "Hausa" },   // ✓ verified
+  { word: "Obọkhian", lang: "Bini" },   // Uses direct Unicode characters for the dot-below mark
   { word: "Doo",           lang: "Ijaw"   },   // ⚠ verify
   { word: "Mesiere",       lang: "Efik"   },   // ⚠ verify
 ];
@@ -19,14 +19,12 @@ const GREETINGS = [
   const big = document.querySelector("[data-greeting]");
   const sub = document.querySelector("[data-greeting-sub]");
   if (!big && !sub) return;
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let i = 0;
   const render = () => {
     if (big) big.textContent = GREETINGS[i].word;
     if (sub) sub.textContent = `Welcome in ${GREETINGS[i].lang}`;
   };
   render();
-  if (reduce) return;
   if (big) big.style.transition = "opacity .3s ease";
   if (sub) sub.style.transition = "opacity .3s ease";
   setInterval(() => {

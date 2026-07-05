@@ -130,9 +130,12 @@ p { margin: 0; }
 .hero { color: var(--paper-on-indigo); position: relative; overflow: hidden; }
 .hero-inner { padding-block: clamp(3.5rem, 8vw, 6.5rem); text-align: center; }
 .greeting {
-  font-family: var(--display); font-weight: 600;
-  font-size: var(--step-4); color: #fff; line-height: 1;
+  font-family: "Noto Serif", "Noto Sans", "Segoe UI", "Arial Unicode MS", serif;
+  font-weight: 600;
+  font-size: var(--step-4); color: #fff; line-height: 1.1;
   margin-bottom: 0.35rem;
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
 }
 .greeting-sub {
   font-size: var(--step--1); letter-spacing: 0.18em; text-transform: uppercase;
@@ -291,8 +294,9 @@ p { margin: 0; }
    ========================================================= */
 
 /* Language status groups (replaces the flat "languages we work in") */
-.lang-status { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.lang-status { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
 .lang-group { text-align: center; }
+.lang-group.muted { grid-column: 1 / -1; }
 .lang-group .status {
   display: inline-block; font-size: var(--step--1); font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem;
