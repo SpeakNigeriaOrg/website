@@ -7,10 +7,10 @@
    correct "welcome/hello" with a native speaker before launch.
    ----------------------------------------------------------- */
 const GREETINGS = [
-  { word: "Ẹ káàbọ̀",      lang: "Yoruba" },   // ✓ verified
-  { word: "Nnọọ",          lang: "Igbo"   },   // ✓ verified
+  { word: "E\u0323 ka\u0301a\u0300bo\u0323\u0300",      lang: "Yoruba" },   // ✓ verified (decomposed for reliable rendering)
+  { word: "Nno\u0323o\u0323",          lang: "Igbo"   },   // ✓ verified (decomposed)
   { word: "Barka da zuwa", lang: "Hausa"  },   // ✓ verified
-  { word: "Obọkhian",      lang: "Bini"   },   // ⚠ verify
+  { word: "Obo\u0323khian",      lang: "Bini"   },   // ⚠ verify
   { word: "Doo",           lang: "Ijaw"   },   // ⚠ verify
   { word: "Mesiere",       lang: "Efik"   },   // ⚠ verify
 ];
