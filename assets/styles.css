@@ -107,6 +107,8 @@ p { margin: 0; }
 .nav-cta:hover { background: var(--indigo-ink); }
 
 .nav-toggle { display: none; }
+.mobile-menu { display: none; }
+.brand-flower { width: 26px; height: 26px; display: block; }
 
 /* ---------- buttons ---------- */
 .btn {
@@ -347,4 +349,34 @@ p { margin: 0; }
 
 @media (max-width: 860px) {
   .lang-status { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* Two prominent form CTAs on the courses page */
+.form-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+.form-cta {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.8rem; box-shadow: var(--shadow); display: flex; flex-direction: column;
+}
+.form-cta.info   { border-top: 4px solid var(--indigo); }
+.form-cta.enroll { border-top: 4px solid var(--saffron); }
+.form-cta h3 { font-size: var(--step-2); color: var(--indigo); }
+.form-cta p { color: var(--ink-soft); margin: 0.5rem 0 1.4rem; }
+.form-cta .btn { align-self: flex-start; margin-top: auto; }
+
+/* Language family cards on the languages page */
+.family { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow); }
+.family .fam-tag {
+  display: inline-block; font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 999px; margin-bottom: 0.8rem;
+  background: color-mix(in srgb, var(--indigo) 10%, #fff); color: var(--indigo);
+}
+.family h3 { font-family: var(--display); font-size: var(--step-2); color: var(--indigo); }
+.family p { color: var(--ink-soft); margin-top: 0.5rem; }
+.family .langs { margin-top: 0.9rem; font-size: var(--step-0); color: var(--ink); }
+.family .langs strong { color: var(--indigo); }
+.strip-link { display: inline-block; margin-top: 1rem; font-weight: 600; color: var(--indigo); text-decoration: none; }
+.strip-link:hover { color: var(--saffron); }
+
+@media (max-width: 860px) {
+  .form-ctas { grid-template-columns: 1fr; }
 }
