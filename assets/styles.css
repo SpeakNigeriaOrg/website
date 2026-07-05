@@ -108,7 +108,7 @@ p { margin: 0; }
 
 .nav-toggle { display: none; }
 .mobile-menu { display: none; }
-.brand-flower { width: 26px; height: 26px; display: block; }
+.brand-flower { width: 26px; height: 26px; display: block; overflow: visible; }
 
 /* ---------- buttons ---------- */
 .btn {
