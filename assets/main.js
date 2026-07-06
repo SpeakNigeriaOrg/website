@@ -11,8 +11,8 @@ const GREETINGS = [
   { word: "Nnọọ", lang: "Igbo" },   // Uses direct Unicode characters for the dot-below + ogonek-style mark
   { word: "Barka da zuwa", lang: "Hausa" },   // ✓ verified
   { word: "Obọkhian", lang: "Bini" },   // Uses direct Unicode characters for the dot-below mark
-  { word: "Doo",           lang: "Ijaw"   },   // ⚠ verify
-  { word: "Mesiere",       lang: "Efik"   },   // ⚠ verify
+  { word: "Í bó sá",           lang: "Ijaw"   },   // ⚠ verify
+  { word: "Emedi",       lang: "Efik"   },   // ✓ verified
 ];
 
 (function greetingRotator() {
