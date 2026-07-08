@@ -223,6 +223,8 @@ p { margin: 0; }
   .cards, .values { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; gap: 2rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 1080px) {
   .nav-links, .nav > .nav-cta { display: none; }
   .nav-toggle {
     display: inline-grid; place-items: center; width: 44px; height: 44px;
