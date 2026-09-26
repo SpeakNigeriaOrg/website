@@ -354,3 +354,155 @@ p { margin: 0; }
 @media (max-width: 860px) {
   .form-ctas { grid-template-columns: 1fr; }
 }
+
+/* Numbered step badge (matches .steps on get-involved) */
+.step-num {
+  width: 2.2rem; height: 2.2rem; border-radius: 50%; margin-bottom: 0.8rem;
+  background: var(--brand-indigo); color: var(--brand-accent);
+  font-family: var(--font-display); font-weight: 600; font-size: 1.1rem;
+  display: grid; place-items: center;
+}
+
+/* Joining steps on the courses page: buttons sit at the bottom of each card */
+.join-steps .value { display: flex; flex-direction: column; }
+.join-steps .value p { margin-bottom: 1.4rem; }
+.join-steps .value .btn { margin-top: auto; align-self: flex-start; }
+
+/* Small print under a band's buttons */
+.band .eyebrow { margin-bottom: 0.8rem; }
+.band .band-note { margin: 1.6rem auto 0; font-size: var(--step--1); color: var(--text-tertiary); }
+.band .band-note a { color: var(--surface); text-underline-offset: 3px; }
+.band .band-note a:hover { color: var(--brand-accent); }
+
+/* ---------- class inquiry form (courses page dialog) ---------- */
+.inquiry {
+  --field-line: #d8ceb9;
+  width: min(640px, calc(100% - 2rem)); max-height: calc(100dvh - 3rem);
+  padding: 0; border: 0; border-radius: 20px; overflow: hidden;
+  background: var(--surface); color: var(--text-primary); box-shadow: 0 30px 80px rgba(21,26,61,.35);
+}
+.inquiry[open] { display: flex; flex-direction: column; }
+.inquiry::backdrop { background: rgba(21,26,61,.6); }
+.inquiry-form { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+
+.inquiry-head {
+  display: flex; align-items: flex-start; gap: 1rem; flex: none;
+  padding: 1.6rem 1.6rem 1.5rem 2rem; color: var(--text-tertiary);
+}
+.inquiry-head h2 { color: var(--surface); font-size: var(--step-2); }
+.inquiry-head p { margin-top: 0.45rem; font-size: var(--step--1); max-width: 44ch; }
+.inquiry-close {
+  flex: none; margin-left: auto; width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer;
+  border: 0; background: rgba(255,255,255,.1); color: var(--surface);
+}
+.inquiry-close:hover { background: rgba(255,255,255,.2); }
+
+.inquiry-body { overflow-y: auto; flex: 1; padding: 0 2rem; overscroll-behavior: contain; }
+.inquiry-section { padding: 1.6rem 0; }
+.inquiry-section + .inquiry-section { border-top: 1px solid var(--border-subtle); }
+.inquiry-section h3 {
+  font-size: var(--step-1); color: var(--brand-indigo); margin-bottom: 1rem;
+}
+.inquiry-section h3 small, .field small {
+  font-family: var(--font-body); font-size: var(--step--1); font-weight: 500; color: var(--text-secondary); margin-left: 0.3rem;
+}
+
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field > span { font-size: var(--step--1); font-weight: 600; color: var(--text-primary); }
+.field input, .field select, .field textarea {
+  font: inherit; font-size: 1rem; color: var(--text-primary); width: 100%;
+  background: var(--surface); border: 1.5px solid var(--field-line); border-radius: 10px;
+  padding: 0.7rem 0.85rem; transition: border-color .15s ease, box-shadow .15s ease;
+}
+.field select {
+  appearance: none; cursor: pointer; padding-right: 2.4rem;
+  background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2321295C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0.8rem center / 16px;
+}
+.field select:invalid { color: #8a8278; }
+.field input::placeholder { color: #a39b90; }
+.field input:hover, .field select:hover, .field textarea:hover { border-color: #bfb399; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--brand-indigo);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-accent) 40%, transparent);
+}
+.field [aria-invalid="true"] { border-color: var(--accent-games); }
+.field textarea { resize: vertical; min-height: 5.5rem; }
+.inquiry-section > .field { margin-top: 1.2rem; }
+
+/* Pill choices (radio buttons styled like the site's buttons) */
+.choice { border: 0; padding: 0; margin: 1.2rem 0 0; min-width: 0; }
+.choice:first-of-type { margin-top: 0; }
+.child .choice { margin-top: 1rem; }
+.choice legend { padding: 0; margin-bottom: 0.5rem; font-size: var(--step--1); font-weight: 600; color: var(--text-primary); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span {
+  display: inline-block; padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer;
+  font-size: var(--step--1); font-weight: 500; color: var(--text-primary);
+  background: var(--surface); border: 1.5px solid var(--field-line);
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.chip:hover span { border-color: var(--brand-indigo); }
+.chip input:checked + span { background: var(--brand-indigo); border-color: var(--brand-indigo); color: var(--surface); }
+.chip input:focus-visible + span { box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-accent) 50%, transparent); }
+.chip input[aria-invalid="true"] + span,
+.choice[aria-invalid="true"] .chip span { border-color: var(--accent-games); }
+.choice[aria-invalid="true"] legend { color: var(--accent-games); }
+
+/* Children */
+.children { display: grid; gap: 1.4rem; }
+.child + .child { padding-top: 1.4rem; border-top: 1px dashed var(--border-subtle); }
+.child-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.7rem; }
+.child-label { font-weight: 700; font-size: var(--step--1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-courses); }
+.children .child:only-child .child-head { display: none; }
+.child-grid { grid-template-columns: 1.6fr 1fr; }
+
+.btn-text {
+  font: inherit; font-size: var(--step--1); font-weight: 600; color: var(--text-secondary);
+  background: none; border: 0; padding: 0.4rem 0.2rem; cursor: pointer;
+  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px;
+}
+.btn-text:hover { color: var(--brand-indigo); text-decoration-color: currentColor; }
+.remove-child:hover { color: var(--accent-games); }
+.add-child {
+  display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.2rem;
+  font: inherit; font-size: var(--step--1); font-weight: 600; color: var(--brand-indigo);
+  background: none; border: 0; padding: 0.3rem 0; cursor: pointer;
+}
+.add-child:hover { color: var(--accent-courses); }
+.add-child[hidden] { display: none; }
+
+.hp { display: none; }
+
+.inquiry-foot {
+  flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 1rem;
+  padding: 1rem 2rem; border-top: 1px solid var(--border-subtle); background: var(--background-primary);
+}
+.form-status { margin-right: auto; font-size: var(--step--1); font-weight: 600; color: var(--accent-games); }
+.form-status a { color: inherit; }
+.inquiry button[type="submit"][disabled] { opacity: 0.6; cursor: progress; }
+
+/* Thank-you state */
+.inquiry-done { padding: 3rem 2rem 2.6rem; text-align: center; overflow-y: auto; }
+.inquiry.is-done .inquiry-head, .inquiry.is-done .inquiry-body, .inquiry.is-done .inquiry-foot { display: none; }
+.done-flower { width: 56px; height: 56px; margin: 0 auto 1.2rem; display: block; }
+.inquiry-done h2 { font-size: var(--step-3); color: var(--brand-indigo); }
+.inquiry-done p { color: var(--text-secondary); max-width: 40ch; margin: 0.9rem auto 0; }
+.inquiry-done .done-note {
+  font-size: var(--step--1); font-weight: 600; color: var(--text-primary);
+  background: color-mix(in srgb, var(--brand-accent) 16%, var(--surface)); border-radius: 12px; padding: 0.8rem 1rem;
+}
+.inquiry-done .btn { margin-top: 1.8rem; }
+body.dialog-open { overflow: hidden; }
+
+@media (max-width: 640px) {
+  .inquiry { width: 100%; max-width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
+  .inquiry-head { padding: 1.2rem 1rem 1.2rem 1.25rem; }
+  .inquiry-body { padding: 0 1.25rem; }
+  .inquiry-foot { padding: 0.8rem 1.25rem; flex-wrap: wrap; }
+  .form-status { flex-basis: 100%; }
+  .field-grid, .child-grid { grid-template-columns: 1fr; }
+}

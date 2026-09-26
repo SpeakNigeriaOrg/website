@@ -3,8 +3,8 @@
 Website for **Speak Nigeria**, a nonprofit helping children connect with
 Nigerian heritage languages.
 
-Plain static HTML/CSS/JS. No build step. Deployed on **Cloudflare Pages** with
-DNS at **Squarespace**.
+Plain static HTML/CSS/JS. No build step. Deployed on **Cloudflare Pages**, with
+DNS also on **Cloudflare**.
 
 ---
 
@@ -15,7 +15,7 @@ speaknigeria/
 ├── index.html          Home
 ├── about.html          About + mission statement
 ├── languages.html      Nigeria's language families + our approach
-├── courses.html        Teaching philosophy + info/enrollment forms + Igbo call
+├── courses.html        Teaching philosophy + inquiry form + memberships + Igbo call
 ├── resources.html      GCompris game project + YouTube videos
 ├── get-involved.html   Volunteer / translator / teacher / dev calls
 ├── favicon.svg
@@ -25,7 +25,9 @@ speaknigeria/
 ├── _redirects          Cloudflare Pages: clean URLs (/about → /about.html)
 ├── assets/
 │   ├── styles.css      Design system (all styling)
-│   └── main.js         Greeting rotator, scroll reveal, mobile menu
+│   └── main.js         Greeting rotator, scroll reveal, mobile menu,
+│                       inquiry form, Zeffy pop-up
+├── apps-script/        Inquiry form backend (Google Apps Script) + setup guide
 ├── .gitignore
 ├── LICENSE             MIT
 └── README.md           This file
@@ -81,25 +83,25 @@ Every push to `main` will auto-deploy from now on.
 
 ---
 
-## DNS: point speaknigeria.org at it (staying on Squarespace)
+## DNS (Cloudflare)
 
-In **Cloudflare Pages → your project → Custom domains**, add both
-`www.speaknigeria.org` and `speaknigeria.org`. Cloudflare will give you a target
-like `speak-nigeria.pages.dev`.
+The domain's DNS is managed in **Cloudflare** (nameservers
+`alice.ns.cloudflare.com` / `dave.ns.cloudflare.com`).
 
-In **Squarespace → your domain → DNS settings**:
+**Website:** in **Cloudflare Pages → your project → Custom domains**, add
+`speaknigeria.org` and `www.speaknigeria.org`. Because the DNS zone is on the
+same Cloudflare account, Cloudflare creates the DNS records and SSL
+certificates automatically.
 
-| Type   | Host | Value                         |
-|--------|------|-------------------------------|
-| CNAME  | www  | `speak-nigeria.pages.dev`     |
-| ALIAS/ANAME (if supported) | @ | `speak-nigeria.pages.dev` |
+**Email (Google Workspace):** these records live in **Cloudflare → speaknigeria.org
+→ DNS → Records**. Don't delete them when changing website settings:
 
-If Squarespace doesn't support ALIAS/ANAME at the apex, use domain **forwarding**
-to redirect `speaknigeria.org` → `https://www.speaknigeria.org` and treat `www`
-as canonical.
-
-Cloudflare provisions SSL automatically once DNS validates (usually minutes,
-sometimes a few hours).
+| Type | Name | Purpose |
+|------|------|---------|
+| MX | `@` | `smtp.google.com`: receives mail |
+| TXT | `@` | `v=spf1 include:_spf.google.com ~all` (SPF: Google may send as us) |
+| TXT | `google._domainkey` | DKIM signature key, generated in Google Admin → Gmail → Authenticate email |
+| TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:admin@speaknigeria.org` (DMARC policy + reports) |
 
 ---
 
