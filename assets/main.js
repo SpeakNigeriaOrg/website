@@ -217,3 +217,17 @@ function dialogForm(dialogId, triggerSelector) {
 
 /* Language interest */
 dialogForm("interest", "[data-form-interest]");
+
+/* Expressions of interest that page-events.js can't see: email links, the
+   Zeffy membership pop-up and the language interest form. Each is marked
+   data-track-form="info|volunteer|enrollment" and reported with the same
+   outbound_form_click event page-events.js sends for the Google Form link
+   (which is also a Google Ads conversion). Google Form links are skipped so a
+   click is never counted twice. The analytics files themselves are copies
+   from the yorubadict repo; edit them there, not here. */
+document.addEventListener("click", (e) => {
+  const link = e.target.closest && e.target.closest("[data-track-form]");
+  if (!link || typeof window.snTrack !== "function") return;
+  if (/docs\.google\.com|forms\.gle/.test(link.getAttribute("href") || "")) return;
+  window.snTrack("outbound_form_click", { form: link.dataset.trackForm });
+});
